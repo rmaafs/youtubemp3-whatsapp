@@ -81,7 +81,6 @@ class Youtube {
   async reply(text) {
     let myMessage = await this.msg.reply(text);
     this.messages.push(myMessage);
-    console.log("Mensajes:", this.messages.length);
   }
 
   /**
