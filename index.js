@@ -50,6 +50,17 @@ client.on("ready", async () =>
 
 //Cuando creamos un mensaje
 client.on("message_create", async (msg) => {
+  if (msg.fromMe) {
+    onMessage(msg);
+  }
+});
+
+//Cuando alguien nos manda un mensaje
+client.on("message", async (msg) => {
+  onMessage(msg);
+});
+
+async function onMessage(msg) {
   if (msg.body.toLowerCase().startsWith("!youtube")) {
     //Si ha mandado el URL en el mensaje
     if (msg.body.split(" ").length > 0) {
@@ -61,4 +72,4 @@ client.on("message_create", async (msg) => {
       msg.reply("Please use !youtube <url from the video>");
     }
   }
-});
+}
