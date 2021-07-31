@@ -19,7 +19,8 @@
   "homepage": "https://github.com/rmaafs/youtubemp3-whatsapp#readme",
   "dependencies": {
     "qrcode-terminal": "^0.12.0",
-    "whatsapp-web.js": "^1.13.2"
+    "whatsapp-web.js": "^1.13.2",
+    "youtube-mp3-downloader": "^0.7.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
@@ -27,5 +28,10 @@
     "@babel/node": "^7.14.7",
     "@babel/preset-env": "^7.14.8",
     "nodemon": "^2.0.12"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "*.json"
+    ]
   }
 }
