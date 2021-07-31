@@ -15,7 +15,8 @@ const client = new Client({
     //executablePath: "/usr/bin/google-chrome-stable",
   },
   session: sessionCfg, //Sesión previamente cargada
-  ffmpegPath: "/usr/bin/ffmpeg",
+  //ffmpegPath: "/usr/bin/ffmpeg",
+  ffmpegPath: "C:/ffmpeg/bin/ffmpeg.exe",
 });
 client.initialize();
 
