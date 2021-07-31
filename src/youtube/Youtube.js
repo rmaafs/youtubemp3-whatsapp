@@ -7,6 +7,8 @@ class Youtube {
     this.msg = msg;
     this.client = client;
     this.extractID(url);
+    this.messages = [];
+
     let self = this;
 
     console.log("Downloading ID:", this.id);
@@ -22,33 +24,37 @@ class Youtube {
       allowWebm: false, // Enable download from WebM sources (default: false)
     });
 
-    this.msg.reply("Descargando...");
+    this.reply("Descargando...");
     this.YD.download(this.id, this.id + ".mp3");
 
     this.YD.on("error", function (err) {
-      self.msg.reply("Error ☹ \n" + err);
+      self.reply("Error ☹ \n" + err);
     });
 
     this.YD.on("progress", function (data) {
-      console.log(
-        data.videoId + ":",
-        data.progress.percentage.toFixed(1) +
-          ", remaining: " +
-          (data.progress.remaining || 0) / 1000 +
-          "s"
-      );
+      let percent = data.progress.percentage.toFixed(1) + "%";
+      let remaining =
+        ((data.progress.remaining || 0) / 100000).toFixed(1) + "s";
+      console.log(data.videoId + ":", percent + ", remaining: " + remaining);
+
+      self.reply(percent + " | " + remaining);
     });
 
     this.YD.on("finished", async function (err, json) {
       console.log(json);
 
+      //Obtenemos el archivo mp3
       const media = await MessageMedia.fromFilePath(
         self.PATH + "/" + json.videoId + ".mp3"
       );
+      //Se lo mandamos por mensaje
       self.client.sendMessage(self.msg.from, media, {
         sendMediaAsDocument: false,
         caption: json.videoTitle,
       });
+
+      //Eliminamos los mensajes que usamos para actualizar al usuario
+      await self.deleteMessages();
     });
   }
 
@@ -66,6 +72,32 @@ class Youtube {
         this.id = this.id.split("&")[0];
       }
     }
+  }
+
+  /**
+   * Función que manda un mensaje como reply y lo añade a la lista de mensajes enviados.
+   * @param {Texto a enviar} text
+   */
+  async reply(text) {
+    let myMessage = await this.msg.reply(text);
+    this.messages.push(myMessage);
+    console.log("Mensajes:", this.messages.length);
+  }
+
+  /**
+   * Función que elimina los mensajes que el bot envió en el proceso.
+   */
+  async deleteMessages() {
+    const deleteLastMessage = async (list) => {
+      if (list.length > 0) {
+        let lastMessage = list.pop();
+        await lastMessage.delete(true);
+        setTimeout(async function () {
+          await deleteLastMessage(list);
+        }, 1000);
+      }
+    };
+    await deleteLastMessage(this.messages);
   }
 }
 
