@@ -4,7 +4,7 @@
   "description": "WhatsAppBot that download mp3 and sent to a number.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon --exec node_modules/.bin/babel-node index.js",
     "sintax:test": "prettier --check \"{,!(node_modules)/**/}*.js\"",
     "sintax:fix": "prettier --check --write \"{,!(node_modules)/**/}*.js\"",
