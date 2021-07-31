@@ -29,7 +29,7 @@ jobs:
           echo "Recuerda tener instalado Prettier como formateador de código en tu Editor de texto"
           echo "Este código usará como estándar la indentación de Prettier."
           echo "Para solucionar tu indentación, ejecuta npm run sintax:fix"
-          npm run test:sintax
+          npm run sintax:test
       - name: Estándares del proyecto
         run: |
           npm test
