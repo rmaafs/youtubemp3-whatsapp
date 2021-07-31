@@ -26,7 +26,7 @@ class Youtube {
     this.YD.download(this.id, this.id + ".mp3");
 
     this.YD.on("error", function (err) {
-      self.msg.reply("Error :( " + err);
+      self.msg.reply("Error ☹ \n" + err);
     });
 
     this.YD.on("progress", function (data) {
