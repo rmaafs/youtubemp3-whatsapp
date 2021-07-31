@@ -9,6 +9,8 @@ class Youtube {
     this.extractID(url);
     let self = this;
 
+    console.log("Downloading ID:", this.id);
+
     this.YD = new ytDownloader({
       //ffmpegPath: "/usr/bin/ffmpeg", // FFmpeg binary location
       //outputPath: "/home/elmaps/botWhatsapp/audios", // Output file location (default: the home directory)
@@ -28,7 +30,6 @@ class Youtube {
     });
 
     this.YD.on("progress", function (data) {
-      console.log(data);
       console.log(
         data.videoId + ":",
         data.progress.percentage.toFixed(1) +
