@@ -1,0 +1,23 @@
+{
+  "name": "youtubemp3-whatsapp",
+  "version": "1.0.0",
+  "description": "WhatsAppBot that download mp3 and sent to a number.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmaafs/youtubemp3-whatsapp.git"
+  },
+  "author": "Rodrigo Maafs Atilano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmaafs/youtubemp3-whatsapp/issues"
+  },
+  "homepage": "https://github.com/rmaafs/youtubemp3-whatsapp#readme",
+  "dependencies": {
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.13.2"
+  }
+}
