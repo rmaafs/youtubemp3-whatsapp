@@ -9,7 +9,7 @@
     "sintax:test": "prettier --check \"{,!(node_modules)/**/}*.js\"",
     "sintax:fix": "prettier --check --write \"{,!(node_modules)/**/}*.js\"",
     "lint": "eslint . --ext .js",
-    "check": "npm run test:sintax && npm run lint && jest"
+    "check": "npm run sintax:test && npm run lint && jest"
   },
   "repository": {
     "type": "git",
