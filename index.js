@@ -67,7 +67,7 @@ async function onMessage(msg) {
       //Obtenemos el URL del mensaje
       let url = msg.body.split(" ")[1];
       //Iniciamos la descarga
-      let youtube = new Youtube(url, client, msg);
+      new Youtube(url, client, msg);
     } else {
       msg.reply("Please use !youtube <url from the video>");
     }
