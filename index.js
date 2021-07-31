@@ -50,11 +50,10 @@ client.on("ready", async () =>
 
 //Cuando creamos un mensaje
 client.on("message_create", async (msg) => {
-  let text = msg.body.toLowerCase();
-  if (text.startsWith("!youtube")) {
+  if (msg.body.toLowerCase().startsWith("!youtube")) {
     //Si ha mandado el URL en el mensaje
-    if (text.split(" ").length > 0) {
-      let url = text.split(" ")[1];
+    if (msg.body.split(" ").length > 0) {
+      let url = msg.body.split(" ")[1];
       let youtube = new Youtube(url, client, msg);
       console.log("ID:", youtube.id);
     } else {
