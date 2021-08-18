@@ -63,7 +63,7 @@ client.on("message", async (msg) => {
 async function onMessage(msg) {
   if (msg.body.toLowerCase().startsWith("!youtube")) {
     //Si ha mandado el URL en el mensaje
-    if (msg.body.split(" ").length > 0) {
+    if (msg.body.includes(" ") && msg.body.split(" ").length > 0) {
       //Obtenemos el URL del mensaje
       let url = msg.body.split(" ")[1];
       //Iniciamos la descarga
