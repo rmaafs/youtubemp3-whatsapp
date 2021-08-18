@@ -48,7 +48,7 @@ class Youtube {
         self.PATH + "/" + json.videoId + ".mp3"
       );
       //Se lo mandamos por mensaje
-      self.client.sendMessage(self.msg.from, media, {
+      self.client.sendMessage(self.msg.to, media, {
         sendMediaAsDocument: false,
         caption: json.videoTitle,
       });
