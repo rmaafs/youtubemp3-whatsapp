@@ -1,5 +1,8 @@
 var ytDownloader = require("youtube-mp3-downloader");
 const { MessageMedia } = require("whatsapp-web.js");
+var os = require("os");
+
+const inLinux = os.type() === "Linux";
 
 class Youtube {
   constructor(url, client, msg) {
@@ -16,7 +19,7 @@ class Youtube {
     this.YD = new ytDownloader({
       //ffmpegPath: "/usr/bin/ffmpeg", // FFmpeg binary location
       //outputPath: "/home/elmaps/botWhatsapp/audios", // Output file location (default: the home directory)
-      ffmpegPath: "C:/ffmpeg/bin/ffmpeg.exe", // FFmpeg binary location
+      ffmpegPath: inLinux ? "/usr/bin/ffmpeg" : "C:/ffmpeg/bin/ffmpeg.exe", // FFmpeg binary location
       outputPath: this.PATH, // Output file location (default: the home directory)
       youtubeVideoQuality: "highestaudio", // Desired video quality (default: highestaudio)
       queueParallelism: 2, // Download parallelism (default: 1)
