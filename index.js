@@ -2,7 +2,9 @@ const fs = require("fs");
 const { Client } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
 const { default: Youtube } = require("./src/youtube/Youtube");
+var os = require("os");
 
+const inLinux = os.type() === "Linux";
 const SESSION_FILE_PATH = "./session.json";
 let sessionCfg;
 if (fs.existsSync(SESSION_FILE_PATH)) {
@@ -16,8 +18,7 @@ const client = new Client({
     //executablePath: "/usr/bin/google-chrome-stable",
   },
   session: sessionCfg, //Sesión previamente cargada
-  //ffmpegPath: "/usr/bin/ffmpeg",
-  ffmpegPath: "C:/ffmpeg/bin/ffmpeg.exe",
+  ffmpegPath: inLinux ? "/usr/bin/ffmpeg" : "C:/ffmpeg/bin/ffmpeg.exe",
 });
 client.initialize();
 
