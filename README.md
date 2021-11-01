@@ -3,6 +3,21 @@ WhatsAppBot that download mp3 and sent to a number.
 
 ---
 
+# Preview
+
+![image](https://user-images.githubusercontent.com/47652130/127727129-65f8361d-9325-43e6-bc97-5666bf9bfb8e.png)
+
+#### Auto destrucción de mensajes de estatus 🙂
+
+![image](https://user-images.githubusercontent.com/47652130/127727144-2c759121-ccb7-45db-919f-de707ac949a1.png)
+
+#### Compatible en modo terminal sin tener un navegador abierto.
+
+![image](https://user-images.githubusercontent.com/47652130/127727152-224b274f-aac8-4c73-bf06-10111f2c1a58.png)
+
+
+---
+
 ### Instalación
 
 - Ejecutar `npm i` para instalar las dependencias.
