@@ -1,3 +1,4 @@
+const fs = require("fs");
 var ytDownloader = require("youtube-mp3-downloader");
 const { MessageMedia } = require("whatsapp-web.js");
 var os = require("os");
@@ -7,6 +8,10 @@ const inLinux = os.type() === "Linux";
 class Youtube {
   constructor(url, client, msg) {
     this.PATH = "audios";
+    if (!fs.existsSync(this.PATH)) {
+      fs.mkdirSync(this.PATH);
+    }
+
     this.msg = msg;
     this.client = client;
     this.extractID(url);
